@@ -34,33 +34,38 @@ export class AppComponent  implements OnInit {
       clearInterval(this.interval);
   }
   scaterPlot(status:any):void{
-      let trace1 = {
-        x: [1, 2, 3, 4],
-        y: [10, 15, 13, 17],
-        mode: 'markers',
-        type: 'scatter'
-      };
+      // let trace1 = {
+      //   x: [1, 2, 3, 4],
+      //   y: [10, 15, 13, 17],
+      //   mode: 'markers',
+      //   type: 'scatter'
+      // };
 
       let trace2 = {
         x: [2, 3, 4, 5],
         y: [16, 5, 11, 9],
         mode: 'lines',
-        type: 'scatter'
+        type: 'scatter',
+        line: {
+          shape: 'linear',
+          color: 'rgb(255, 157, 98)'
+        }
       };
 
-      let trace3 = {
-        x: [1, 2, 3, 4],
-        y: [12, 9, 15, 12],
-        mode: 'lines+markers',
-        type: 'scatter'
-      };
+      // let trace3 = {
+      //   x: [1, 2, 3, 4],
+      //   y: [12, 9, 15, 12],
+      //   mode: 'lines+markers',
+      //   type: 'scatter'
+      // };
 
-      let data = [trace1, trace2, trace3];
+      let data = [ trace2];
   
       console.log('status',status);
       var testVal=['A','B','C','D'];
       let layout={
-        title:'PlotA'
+        title:'PlotA',
+        
       }
       Plotly.newPlot("myDiv",data,layout);
       this.myPlot = document.getElementById('myDiv');
@@ -70,49 +75,49 @@ export class AppComponent  implements OnInit {
      // });
      const self = this;
 
-      if (!status){
-        this.interval = setInterval(() => {
-          if(this.progess >= 3) {
-            console.log(this.progess);
-            this.coutVal++;
-            if (this.coutVal==4){
-              this.coutVal=0;
-            }
-            let layoutNew={
-              title:'Plot'+this.textName
-            }
-            Plotly.newPlot("myDiv",data,layoutNew);
-            this.textName=testVal[this.coutVal];
-            this.progess=0;
-          } else {
-            this.progess++;
+      // if (!status){
+      //   this.interval = setInterval(() => {
+      //     if(this.progess >= 3) {
+      //       console.log(this.progess);
+      //       this.coutVal++;
+      //       if (this.coutVal==4){
+      //         this.coutVal=0;
+      //       }
+      //       let layoutNew={
+      //         title:'Plot'+this.textName
+      //       }
+      //       Plotly.newPlot("myDiv",data,layoutNew);
+      //       this.textName=testVal[this.coutVal];
+      //       this.progess=0;
+      //     } else {
+      //       this.progess++;
             
-          }
-        },1000);
-      }
-     $('#myDiv').hover(function(ev){
-       console.log('hover clear');
-        clearInterval(self.interval);
-        self.coutVal=0;
-      }, function(ev){
-        self.interval = setInterval(() => {
-          if(self.progess >= 3) {
-            console.log(self.progess);
-            self.coutVal++;
-            if (self.coutVal==4){
-              self.coutVal=0;
-            }
-            let layoutNew={
-              title:'Plot'+self.textName
-            }
-            Plotly.newPlot("myDiv",data,layoutNew);
-            self.textName=testVal[self.coutVal];
-            self.progess=0;
-          } else {
-            self.progess++;
+      //     }
+      //   },1000);
+      // }
+  //    $('#myDiv').hover(function(ev){
+  //      console.log('hover clear');
+  //       clearInterval(self.interval);
+  //       self.coutVal=0;
+  //     }, function(ev){
+  //       self.interval = setInterval(() => {
+  //         if(self.progess >= 3) {
+  //           console.log(self.progess);
+  //           self.coutVal++;
+  //           if (self.coutVal==4){
+  //             self.coutVal=0;
+  //           }
+  //           let layoutNew={
+  //             title:'Plot'+self.textName
+  //           }
+  //           Plotly.newPlot("myDiv",data,layoutNew);
+  //           self.textName=testVal[self.coutVal];
+  //           self.progess=0;
+  //         } else {
+  //           self.progess++;
             
-          }
-        },1000);
-      });
-  }
+  //         }
+  //       },1000);
+  //     });
+ }
 }
